@@ -20,7 +20,7 @@ export default function Hero() {
           <FadeUp className='flex justify-center'>
             <div className="flex items-center justify-center gap-2 max-w-60 bg-primary/10 text-primary px-6 py-3 text-sm font-bold font-roboto border border-primary">
               <Calendar1Icon className="w-4 h-4" />
-              23 - 30 Septiembre 2025
+              23 - 28 Septiembre 2025
             </div>
           </FadeUp>
 
