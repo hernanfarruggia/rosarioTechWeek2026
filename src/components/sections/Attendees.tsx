@@ -1,6 +1,7 @@
 import Button from '@/components/ui/Button';
 import FadeUp from '@/components/ui/FadeUp';
 import { CalendarCheckIcon, CheckIcon, MessageCircleIcon } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Attendees() {
   const benefits = [
@@ -44,11 +45,14 @@ export default function Attendees() {
           </FadeUp>
           
           <FadeUp delay={0.2}>
-            {/* Community image placeholder */}
-            <div className="bg-gradient-to-br from-secondary/20 to-primary/20 h-72 flex items-center justify-center">
-              <div className="text-center">
-                <p className="text-gray-300">Comunidad tech Rosario</p>
-              </div>
+            <div className="bg-gradient-to-br from-secondary/20 to-primary/20 h-72 w-full md:max-w-3/4 flex items-center justify-center relative">
+              <Image
+                src="/2.jpeg"
+                alt='Asistentes a Rosario TechWeek'
+                fill
+                className='object-cover'
+              />
+              <div className="absolute inset-0 bg-black/25 hover:bg-transparent transition-colors duration-300"></div>
             </div>
           </FadeUp>
         </div>

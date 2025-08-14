@@ -23,37 +23,20 @@ export default function Hosts({ btnAction }: HostsProps) {
           </h2>
           <p className="text-gray-600 text-xl font-medium">
             Oficinas, universidades, espacios culturales, coworkings: todos pueden ser 
-            parte de la Rosario TechWeek como sede anfitriona. Cada espacio suma su singularidad y 
-            comunidad a esta gran experiencia colectiva.
+            parte de la Rosario TechWeek como sede anfitriona.<br />
+            Cada espacio suma su singularidad y comunidad a esta gran experiencia colectiva.
           </p>
-        </FadeUp>
-
-        <FadeUp delay={0.2}>
-          <div className="grid md:grid-cols-2 gap-8">
-            {venueTypes.map((venue, index) => {
-              const IconComponent = venue.icon;
-              return (
-                <div key={index} className="flex flex-col items-center p-6 hover:bg-black hover:scale-105 group transition-all duration-300">
-                  <div className="flex items-center gap-4 mb-4 text-gray-700 md:text-gray-300 group-hover:text-white">
-                    <IconComponent size={32} />
-                    <h5 className="text-3xl md:text-5xl">
-                      {venue.name}
-                    </h5>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
         </FadeUp>
 
         <div className="grid md:grid-cols-2 gap-12 items-start mb-12">
           <FadeUp delay={0.4}>
             <h4 className="text-2xl font-bold text-black mb-6">
-              ¿Querés alojar un taller, una charla o una experiencia en tu espacio?
+              ¿Querés alojar un taller, una charla, ser líder de una experiencia o hostear un panel?
             </h4>
             <p className="text-lg text-gray-600 leading-relaxed mb-6">
-              Cada espacio anfitrión se convierte en un nodo de la red de innovación rosarina. 
-              Tu venue puede ser parte de esta semana histórica para el ecosistema tech de la ciudad.
+              Cada espacio anfitrión se convierte en un nodo de la red de innovación rosarina.<br />
+              Tu venue puede ser parte de esta semana histórica para el ecosistema tech de la ciudad.<br />
+              Y vos podés ser uno de nuestros speakers, compartiendo tu conocimiento y experiencia con la comunidad.
             </p>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
@@ -71,12 +54,21 @@ export default function Hosts({ btnAction }: HostsProps) {
             </div>
           </FadeUp>
 
-          <FadeUp delay={0.4}>
-            <div className="bg-black/20 aspect-video flex items-center justify-center">
-              <div className="text-center">
-                <p className="text-white/90">Mapa interactivo por zonas</p>
-                <p className="text-white/80 text-sm mt-2">(Se integrará mapa de sedes)</p>
-              </div>
+          <FadeUp delay={0.2}>
+            <div className="grid">
+              {venueTypes.map((venue, index) => {
+                const IconComponent = venue.icon;
+                return (
+                  <div key={index} className="flex flex-col items-center p-4 hover:bg-black hover:scale-105 group transition-all duration-300">
+                    <div className="flex items-center gap-4 text-gray-700 md:text-gray-300 group-hover:text-white">
+                      <IconComponent size={32} />
+                      <h5 className="text-3xl md:text-5xl">
+                        {venue.name}
+                      </h5>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </FadeUp>
         </div>

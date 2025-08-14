@@ -14,6 +14,7 @@ export default function Contact({ message, interest }: ContactProps) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     organization: '',
     interest: interest || '',
     message: message || ''
@@ -53,6 +54,7 @@ export default function Contact({ message, interest }: ContactProps) {
         setFormData({
           name: '',
           email: '',
+          phone: '',
           organization: '',
           interest: '',
           message: ''
@@ -69,9 +71,9 @@ export default function Contact({ message, interest }: ContactProps) {
   };
 
   const socialLinks = [
-    { name: "Twitter", icon: TwitterIcon, href: "#" },
+    { name: "Twitter", icon: TwitterIcon, href: "https://x.com/rosariotechweek" },
     { name: "LinkedIn", icon: LinkedinIcon, href: "https://www.linkedin.com/company/rosario-tech-week" },
-    { name: "Instagram", icon: InstagramIcon, href: "#" },
+    { name: "Instagram", icon: InstagramIcon, href: "https://www.instagram.com/rosariotechweek" },
     { name: "WhatsApp", icon: MessageCircleIcon, href: "https://docs.google.com/forms/d/e/1FAIpQLSdo9yMIaoqnwnLhGsBHmKPdS37GsQQSDMalqi1Ulpzh_S3s2Q/viewform" }
   ];
 
@@ -128,6 +130,20 @@ export default function Contact({ message, interest }: ContactProps) {
                   />
                 </div>
                 <div>
+                  <label htmlFor="phone" className="block text-sm font-medium text-accent-gray mb-2">
+                    Teléfono
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 border border-gray-300 focus:border-transparent transition-colors"
+                    placeholder="+54 341 123 4567"
+                  />
+                </div>
+                <div>
                   <label htmlFor="organization" className="block text-sm font-medium text-accent-gray mb-2">
                     Organización
                   </label>
@@ -177,19 +193,19 @@ export default function Contact({ message, interest }: ContactProps) {
                   ></textarea>
                 </div>
                 {submitStatus === 'success' && (
-                  <div className="p-4 bg-green-100 border border-green-400 text-green-700 rounded">
+                  <div className="p-4 bg-green-800/50 border border-green-800 text-green-600 text-medium">
                     ¡Mensaje enviado correctamente! Te contactaremos pronto.
                   </div>
                 )}
                 {submitStatus === 'error' && (
-                  <div className="p-4 bg-red-100 border border-red-400 text-red-700 rounded">
+                  <div className="p-4 bg-red-800/30 border border-red-800 text-red-600 text-medium">
                     Error al enviar el mensaje. Por favor, intentá de nuevo.
                   </div>
                 )}
                 <Button 
                   type="submit" 
                   size="lg" 
-                  className="w-full"
+                  className={`w-full ${isSubmitting ? 'cursor-not-allowed bg-primary/30' : 'hover:cursor-pointer'}`}
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}

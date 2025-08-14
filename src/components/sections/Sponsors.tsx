@@ -32,13 +32,6 @@ export default function Sponsors({ btnAction }: SponsorsProps) {
         </FadeUp>
 
         <div className="grid lg:grid-cols-2 gap-12 items-start mb-12">
-          <FadeUp delay={0.2}>
-            <div className="bg-gradient-to-br from-primary/10 to-secondary/10 aspect-video flex items-center justify-center">
-              <div className="text-center">
-                <p className="text-accent-gray">Logos de sponsors</p>
-              </div>
-            </div>
-          </FadeUp>
 
           <FadeUp delay={0.4}>
             <h4 className="text-2xl font-bold text-white mb-6">
@@ -53,23 +46,23 @@ export default function Sponsors({ btnAction }: SponsorsProps) {
               ))}
             </div>
           </FadeUp>
-        </div>
 
-        <FadeUp delay={0.6} className="bg-white/20 p-8 text-center flex gap-4 justify-center items-center">
-          <Button
-            variant='outline-tertiary'
-            size="lg"
-            className="hover:cursor-pointer"
-            onClick={() => btnAction('sponsor')}
-          >
-            <DownloadCloudIcon className='w-6 h-6 mr-2' />
-            Quiero ser sponsor!
-          </Button>
-          <Button variant='outline-tertiary' size="lg" href="#" target="_blank">
-            <DownloadCloudIcon className='w-6 h-6 mr-2' />
-            Descargar kit de patrocinio
-          </Button>
-        </FadeUp>
+          <FadeUp delay={0.6} className="bg-white/20 p-8 text-center flex gap-4 justify-center items-center">
+            <Button
+              variant='outline-tertiary'
+              size="lg"
+              className="hover:cursor-pointer"
+              onClick={() => btnAction('sponsor')}
+            >
+              <DownloadCloudIcon className='w-6 h-6 mr-2' />
+              Quiero ser sponsor!
+            </Button>
+            <Button variant='outline-tertiary' size="lg" href="#" target="_blank">
+              <DownloadCloudIcon className='w-6 h-6 mr-2' />
+              Descargar kit de patrocinio
+            </Button>
+          </FadeUp>
+        </div>
 
       </div>
     </section>

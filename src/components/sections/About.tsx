@@ -1,4 +1,5 @@
 import FadeUp from '@/components/ui/FadeUp';
+import Image from 'next/image';
 
 export default function About() {
   const stats = [
@@ -35,11 +36,14 @@ export default function About() {
           </FadeUp>
           
           <FadeUp delay={0.4}>
-            {/* Placeholder for community image */}
-            <div className="bg-gradient-to-br from-primary/10 to-secondary/10 aspect-video flex items-center justify-center">
-              <div className="text-center">
-                <p className="text-body text-accent-gray">Imagen de la comunidad tech</p>
-              </div>
+            <div className="bg-gradient-to-br from-secondary/20 to-primary/20 h-72 w-full md:max-w-3/4 flex items-center justify-center relative">
+              <Image
+                src="/1.jpeg"
+                alt='Asistentes a Rosario TechWeek'
+                fill
+                className='object-cover'
+              />
+              <div className="absolute inset-0 bg-white/25 hover:bg-transparent transition-colors duration-300"></div>
             </div>
           </FadeUp>
         </div>
