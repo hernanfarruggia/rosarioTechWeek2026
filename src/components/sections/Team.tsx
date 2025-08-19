@@ -21,7 +21,7 @@ export default function Team() {
     },
     {
       name: 'Gabriela Giorgio',
-      role: 'Growth & Marketing Specialist',
+      role: 'Growth & Marketing Consultant',
       img: 'gabriela.jpeg'
     },
     {
