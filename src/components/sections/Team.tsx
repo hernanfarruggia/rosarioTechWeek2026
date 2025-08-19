@@ -41,7 +41,7 @@ export default function Team() {
     },
     {
       name: 'Sol Ariaca',
-      role: 'Product & Innovation Strategist @ W3 IT Solutions',
+      role: 'Product & Innovation Strategist',
       img: 'sol.jpeg'
     },
     {
