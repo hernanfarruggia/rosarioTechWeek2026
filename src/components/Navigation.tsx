@@ -12,6 +12,7 @@ export default function Navigation() {
     { name: 'Sponsors', href: '#sponsors' },
     { name: 'Hosts', href: '#hosts' },
     { name: 'Prensa', href: '#press' },
+    { name: 'Equipo', href: '#team' },
     { name: 'Contacto', href: '#contacto' },
   ];
 

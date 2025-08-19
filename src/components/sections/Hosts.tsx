@@ -73,7 +73,7 @@ export default function Hosts({ btnAction }: HostsProps) {
           </FadeUp>
         </div>
 
-        <FadeUp delay={0.8} className="bg-black/5 p-8 text-center flex gap-4 justify-center items-center">
+        <FadeUp delay={0.8} className="bg-black/5 p-8 text-center flex flex-col md:flex-row gap-4 justify-center items-center">
           <Button
             variant='outline'
             size="lg"
@@ -81,7 +81,7 @@ export default function Hosts({ btnAction }: HostsProps) {
             onClick={() => btnAction('venue')}
           >
             <PlusSquareIcon className='w-6 h-6 mr-2' />
-            Sumá tu espacio o evento a la TechWeek
+            Sumá tu evento
           </Button>
           <Button
             variant='outline'

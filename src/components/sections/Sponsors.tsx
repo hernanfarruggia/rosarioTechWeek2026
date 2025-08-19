@@ -48,18 +48,9 @@ export default function Sponsors({ btnAction }: SponsorsProps) {
           </FadeUp>
 
           <FadeUp delay={0.6} className="bg-white/20 p-8 text-center flex gap-4 justify-center items-center">
-            <Button
-              variant='outline-tertiary'
-              size="lg"
-              className="hover:cursor-pointer"
-              onClick={() => btnAction('sponsor')}
-            >
+            <Button variant='outline-tertiary' size="lg" href="https://forms.gle/eahSE2NbffTXA9xz6" target="_blank">
               <DownloadCloudIcon className='w-6 h-6 mr-2' />
               Quiero ser sponsor!
-            </Button>
-            <Button variant='outline-tertiary' size="lg" href="#" target="_blank">
-              <DownloadCloudIcon className='w-6 h-6 mr-2' />
-              Descargar kit de patrocinio
             </Button>
           </FadeUp>
         </div>

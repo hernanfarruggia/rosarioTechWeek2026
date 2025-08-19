@@ -90,7 +90,7 @@ export default function Press({ btnAction }: PressProps) {
             <BadgeCheckIcon className='w-6 h-6 mr-2' />
             Solicitá tu acreditación
           </Button>
-          <Button variant='outline-tertiary' size="lg" href="#" target="_blank" className='w-full md:w-auto'>
+          <Button variant='outline-tertiary' size="lg" href="https://drive.google.com/drive/folders/1us94wGeehD5QbozfpnFTITJy5GG5ky3S" target="_blank" className='w-full md:w-auto'>
             <DownloadCloudIcon className='w-6 h-6 mr-2' />
             Descargar media kit
           </Button>

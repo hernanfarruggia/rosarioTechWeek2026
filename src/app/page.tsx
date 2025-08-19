@@ -8,6 +8,7 @@ import Attendees from '@/components/sections/Attendees';
 import Sponsors from '@/components/sections/Sponsors';
 import Hosts from '@/components/sections/Hosts';
 import Press from '@/components/sections/Press';
+import Team from '@/components/sections/Team';
 // import VisitRosario from '@/components/sections/VisitRosario';
 import Contact from '@/components/sections/Contact';
 import { useState } from 'react';
@@ -56,6 +57,9 @@ export default function Home() {
         </section>
         <section id="prensa">
           <Press btnAction={handleContactFormUpdate} />
+        </section>
+        <section id="equipo">
+          <Team />
         </section>
         {/* <section id="visita-rosario">
           <VisitRosario />
