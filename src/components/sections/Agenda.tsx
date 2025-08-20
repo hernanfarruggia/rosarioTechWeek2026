@@ -89,7 +89,7 @@ export default function Agenda() {
         </FadeUp>
 
         <FadeUp delay={0.4} className="bg-black/20 p-8 text-center">
-          <Button variant='outline-tertiary' size="lg" href="https://luma.com/rosario-techweek-2025" target="_blank" className='w-full md:w-auto'>
+          <Button variant='outline-tertiary' size="lg" href="https://lu.ma/rosariotechweek" target="_blank" className='w-full md:w-auto'>
             <CalendarCheckIcon className='w-6 h-6 mr-2' />
             Ver calendario!
           </Button>

@@ -49,7 +49,7 @@ export default function Navigation() {
           {/* CTA Button */}
           <div className="hidden md:block">
             <a
-              href="https://luma.com/rosario-techweek-2025"
+              href="https://lu.ma/rosariotechweek"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-primary text-white px-4 py-2 hover:bg-orange-600 transition-colors duration-200 font-medium"
@@ -90,7 +90,7 @@ export default function Navigation() {
                 </a>
               ))}
               <a
-                href="https://luma.com/rosario-techweek-2025"
+                href="https://lu.ma/rosariotechweek"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block px-3 py-2 bg-primary text-white hover:bg-orange-600 transition-colors duration-200 font-medium text-center mt-4"
