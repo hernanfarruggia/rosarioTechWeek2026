@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { google } from 'googleapis';
 
 interface ContactFormData {
   name: string;
@@ -22,101 +21,99 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
-
-    // Configurar OAuth2 client
-    const oauth2Client = new google.auth.OAuth2(
-      process.env.GOOGLE_CLIENT_ID,
-      process.env.GOOGLE_CLIENT_SECRET,
-      'https://developers.google.com/oauthplayground'
-    );
-
-    oauth2Client.setCredentials({
-      refresh_token: process.env.GOOGLE_REFRESH_TOKEN,
-    });
-
-    try {
-      // Debug logging
-      console.log('Gmail API Setup:', {
-        hasClientId: !!process.env.GOOGLE_CLIENT_ID,
-        hasClientSecret: !!process.env.GOOGLE_CLIENT_SECRET,
-        hasRefreshToken: !!process.env.GOOGLE_REFRESH_TOKEN,
-        hasGmailUser: !!process.env.GMAIL_USER,
-        gmailUser: process.env.GMAIL_USER
-      });
-
-      // Get access token
-      const { token: accessToken } = await oauth2Client.getAccessToken();
-      if (!accessToken) {
-        throw new Error('No access token received');
-      }
-      console.log('Access token obtained successfully');
-
-      // Initialize Gmail API
-      const gmail = google.gmail({ version: 'v1', auth: oauth2Client });
-
-      // Mapear valores del select para el email
-      const interestLabels: { [key: string]: string } = {
-        sponsor: 'Ser sponsor',
-        speaker: 'Ser speaker', 
-        venue: 'Ofrecer espacio/venue',
-        attendee: 'Asistir al evento',
-        press: 'Acreditación de prensa',
-        other: 'Otro'
-      };
-
-      const interestText = interestLabels[interest] || interest || 'No especificado';
-
-      // Create email content
-      const emailContent = `From: ${process.env.GMAIL_USER}
-To: ${process.env.EMAIL_TO}, hernan.farruggia@gmail.com
-Subject: Nuevo contacto de Rosario TechWeek 2025 - ${interestText}
-Content-Type: text/html; charset=utf-8
-
-<h2>Nuevo mensaje de contacto</h2>
-<p><strong>Nombre:</strong> ${name}</p>
-<p><strong>Email:</strong> ${email}</p>
-<p><strong>Teléfono:</strong> ${phone || 'No especificado'}</p>
-<p><strong>Organización:</strong> ${organization || 'No especificada'}</p>
-<p><strong>Interés:</strong> ${interestText}</p>
-<p><strong>Mensaje:</strong></p>
-<p>${message.replace(/\n/g, '<br>')}</p>
-<hr>
-<p><em>Enviado desde el formulario de contacto de Rosario TechWeek 2025</em></p>
-`;
-
-      // Encode email content as base64url
-      const encodedMessage = Buffer.from(emailContent)
-        .toString('base64')
-        .replace(/\+/g, '-')
-        .replace(/\//g, '_')
-        .replace(/=+$/, '');
-
-      // Send email using Gmail API
-      await gmail.users.messages.send({
-        userId: 'me',
-        requestBody: {
-          raw: encodedMessage,
-        },
-      });
-
-      console.log('Email sent successfully via Gmail API');
-
-      return NextResponse.json({ 
-        message: 'Email enviado correctamente' 
-      }, { status: 200 });
-
-    } catch (gmailApiError) {
-      console.error('Error with Gmail API:', gmailApiError);
+    
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
       return NextResponse.json(
-        { error: 'Error enviando email via Gmail API' },
+        { error: 'Invalid email format' },
+        { status: 400 }
+      );
+    }
+
+    const apiKey = process.env.BREVO_API_KEY;
+    if (!apiKey) {
+      console.error('BREVO_API_KEY not found');
+      return NextResponse.json(
+        { error: 'Server configuration error' },
         { status: 500 }
       );
     }
 
-  } catch (error) {
-    console.error('Error enviando email:', error);
+    // Mapear valores del select para el email
+    const interestLabels: { [key: string]: string } = {
+      sponsor: 'Ser sponsor',
+      speaker: 'Ser speaker', 
+      venue: 'Ofrecer espacio/venue',
+      attendee: 'Asistir al evento',
+      press: 'Acreditación de prensa',
+      other: 'Otro'
+    };
+
+    const interestText = interestLabels[interest] || interest || 'No especificado';
+
+    // Prepare internal email (to hernan@wearekadre.com)
+    const internalEmailData = {
+      sender: {
+        name: "Rosario Tech Week",
+        email: "hernan@wearekadre.com"
+      },
+      to: [{
+        email: "rosariotechweek@gmail.com"
+      }, {
+        email: "hernan.farruggia@gmail.com"
+      }],
+      subject: `Nuevo contacto de Rosario TechWeek 2025 - ${interestText}`,
+      textContent: `
+Nuevo mensaje de contacto:
+
+Nombre: ${name}
+Email: ${email}
+Telefono: ${phone || 'No especificado'}
+Organización: ${organization || 'No especificada'}
+Interés: ${interestText}
+
+Message:
+${message}
+
+--
+Enviado desde el formulario de contacto de Rosario TechWeek 2025
+      `.trim()
+    };
+
+    // Send both emails
+    const brevoApiUrl = 'https://api.brevo.com/v3/smtp/email';
+    
+    const internalResponse = await fetch(brevoApiUrl, {
+      method: 'POST',
+      headers: {
+        'api-key': apiKey,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(internalEmailData),
+    });
+
+    if (!internalResponse.ok) {
+      const error = await internalResponse.text();
+      console.error('Internal email failed:', error);
+      throw new Error('Failed to send internal notification');
+    }
+
     return NextResponse.json(
-      { error: 'Error interno del servidor' },
+      { 
+        message: 'Email sent successfully',
+        success: true 
+      },
+      { status: 200 }
+    );
+
+  } catch (error) {
+    console.error('Contact form error:', error);
+    return NextResponse.json(
+      { 
+        error: 'Failed to send email',
+        message: error instanceof Error ? error.message : 'Unknown error'
+      },
       { status: 500 }
     );
   }
