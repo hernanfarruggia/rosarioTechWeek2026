@@ -48,7 +48,7 @@ export default function Hero() {
           {/* CTA Buttons */}
           <FadeUp delay={0.6}>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button size="lg" href="#agenda" className='w-full md:w-auto'>
+              <Button size="lg" href="https://lu.ma/rosariotechweek" target="_blank" className='w-full md:w-auto'>
                 Ver Agenda
               </Button>
               <Button variant="outline-secondary" size="lg" href="#sponsors" className='w-full md:w-auto'>
