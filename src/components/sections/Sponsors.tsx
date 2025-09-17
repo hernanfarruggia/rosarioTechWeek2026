@@ -90,6 +90,14 @@ export default function Sponsors({ btnAction }: SponsorsProps) {
       name: 'UAI',
       img: 'uai.png'
     },
+    {
+      name: 'Unaje',
+      img: 'unaje.png'
+    },
+    {
+      name: 'Usina',
+      img: 'usina.png'
+    },
   ]
 
   return (
