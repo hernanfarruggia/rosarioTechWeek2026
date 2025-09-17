@@ -1,5 +1,6 @@
 import Button from '@/components/ui/Button';
 import FadeUp from '@/components/ui/FadeUp';
+import Image from 'next/image';
 import { CheckIcon, DownloadCloudIcon } from 'lucide-react';
 
 type SponsorsProps = {
@@ -14,6 +15,82 @@ export default function Sponsors({ btnAction }: SponsorsProps) {
     "Reconocimiento como impulsor de la innovación",
     "Networking con líderes y decisores"
   ];
+
+  const mainSponsors = [
+    {
+      name: 'InnLab',
+      img: 'innlab.png'
+    },
+    {
+      name: 'Universe',
+      img: 'universe.png'
+    },
+    {
+      name: 'Renaiss',
+      img: 'renaiss.png'
+    },
+    {
+      name: 'Mepad',
+      img: 'mepad.png'
+    },
+    {
+      name: 'The Hybrid',
+      img: 'the-hybrid.png'
+    },
+  ]
+
+  const communitySponsors = [
+    {
+      name: 'FullFoto',
+      img: 'fullfoto.png'
+    },
+    {
+      name: 'Kadre',
+      img: 'kadre.png'
+    },
+    {
+      name: 'EkosLab',
+      img: 'ekoslab.png'
+    },
+    {
+      name: 'Teramot',
+      img: 'teramot.png'
+    },
+    {
+      name: 'Golosetti',
+      img: 'golosetti.png'
+    },
+    {
+      name: 'Materia Prima',
+      img: 'materia-prima.png'
+    },
+  ]
+
+  const mediaPartners = [
+    {
+      name: 'Comunidad Fan',
+      img: 'comunidad-fan.png'
+    },
+    {
+      name: 'Rosario Times',
+      img: 'rosario-times.png'
+    },
+    {
+      name: 'Barra Libre',
+      img: 'barra-libre.png'
+    },
+  ]
+
+  const aliados = [
+    {
+      name: 'Comunidad HR',
+      img: 'comunidad-hr.png'
+    },
+    {
+      name: 'UAI',
+      img: 'uai.png'
+    },
+  ]
 
   return (
     <section id="sponsors" className="py-20 bg-secondary dot-matrix">
@@ -47,13 +124,92 @@ export default function Sponsors({ btnAction }: SponsorsProps) {
             </div>
           </FadeUp>
 
-          <FadeUp delay={0.6} className="bg-white/20 p-8 text-center flex gap-4 justify-center items-center">
+          <FadeUp delay={0.6} className="bg-white/20 p-8 text-center flex gap-4 justify-center items-center w-full">
             <Button variant='outline-tertiary' size="lg" href="https://forms.gle/eahSE2NbffTXA9xz6" target="_blank">
               <DownloadCloudIcon className='w-6 h-6 mr-2' />
               Quiero ser sponsor!
             </Button>
           </FadeUp>
         </div>
+
+        <FadeUp delay={0.6} className='text-center bg-white/10 p-8'>
+          <h3 className="text-3xl font-bold text-white mb-6">
+            Main sponsors:
+          </h3>
+          <div className="text-center flex gap-12 justify-center items-center w-full flex-wrap">
+            {
+              mainSponsors.map((sponsor, index) => (
+                <div key={index} className='w-[250px] h-20 relative'>
+                  <Image
+                    src={`/sponsors/main/${sponsor.img}`}
+                    alt={`${sponsor.name}`}
+                    fill
+                    objectFit="contain"
+                    quality={100}
+                    className='opacity-75 hover:opacity-100 transition'
+                  />
+                </div>
+              ))
+            }
+          </div>
+          <h3 className="text-3xl font-bold text-white mt-24 mb-6">
+            Community sponsors:
+          </h3>
+          <div className="text-center flex gap-18 justify-center items-center w-full flex-wrap">
+            {
+              communitySponsors.map((sponsor, index) => (
+                <div key={index} className='w-[120px] h-20 relative'>
+                  <Image
+                    src={`/sponsors/community/${sponsor.img}`}
+                    alt={`${sponsor.name}`}
+                    fill
+                    objectFit="contain"
+                    quality={100}
+                    className='opacity-75 hover:opacity-100 transition'
+                  />
+                </div>
+              ))
+            }
+          </div>
+          <h3 className="text-3xl font-bold text-white mt-24 mb-6">
+            Media partners:
+          </h3>
+          <div className="text-center flex gap-18 justify-center items-center w-full flex-wrap">
+            {
+              mediaPartners.map((sponsor, index) => (
+                <div key={index} className='w-[120px] h-20 relative'>
+                  <Image
+                    src={`/sponsors/media-partners/${sponsor.img}`}
+                    alt={`${sponsor.name}`}
+                    fill
+                    objectFit="contain"
+                    quality={100}
+                    className='opacity-75 hover:opacity-100 transition'
+                  />
+                </div>
+              ))
+            }
+          </div>
+          <h3 className="text-3xl font-bold text-white mt-24 mb-6">
+            Aliados:
+          </h3>
+          <div className="text-center flex gap-18 justify-center items-center w-full flex-wrap">
+            {
+              aliados.map((sponsor, index) => (
+                <div key={index} className='w-[120px] h-20 relative'>
+                  <Image
+                    src={`/sponsors/aliados/${sponsor.img}`}
+                    alt={`${sponsor.name}`}
+                    fill
+                    objectFit="contain"
+                    quality={100}
+                    className='opacity-75 hover:opacity-100 transition'
+                  />
+                </div>
+              ))
+            }
+          </div>
+        </FadeUp>
 
       </div>
     </section>

@@ -2,11 +2,35 @@ import Image from 'next/image';
 import Button from '@/components/ui/Button';
 import FadeUp from '@/components/ui/FadeUp';
 import { Calendar1Icon } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function Hero() {
 
+  const mainSponsors = [
+    {
+      name: 'InnLab',
+      img: 'innlab.png'
+    },
+    {
+      name: 'Universe',
+      img: 'universe.png'
+    },
+    {
+      name: 'Renaiss',
+      img: 'renaiss.png'
+    },
+    {
+      name: 'Mepad',
+      img: 'mepad.png'
+    },
+    {
+      name: 'The Hybrid',
+      img: 'the-hybrid.png'
+    },
+  ]
+
   return (
-    <section className="min-h-screen flex items-center justify-center bg-accent-black overflow-hidden relative dot-matrix">
+    <section className="min-h-screen flex flex-col items-center justify-center bg-accent-black overflow-hidden relative dot-matrix">
       {/* Geometric background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary opacity-18 rounded-full blur-3xl animate-float-1"></div>
@@ -15,7 +39,7 @@ export default function Hero() {
         <div className="absolute -top-40 left-40 w-64 h-64 bg-primary opacity-10 rounded-full blur-3xl animate-float-1"></div>
       </div>
       
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-24 mb-32 text-center relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-24 text-center relative z-10">
         <div className="max-w-6xl mx-auto flex flex-col">
           <FadeUp className='flex justify-center'>
             <div className="flex items-center justify-center gap-2 max-w-60 bg-primary/10 text-primary px-6 py-3 text-sm font-bold font-roboto border border-primary">
@@ -38,15 +62,15 @@ export default function Hero() {
           </FadeUp>
           
           {/* Description */}
-          <FadeUp delay={0.4} className='mb-8'>
+          {/* <FadeUp delay={0.4} className='mb-8'>
             <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
               Desde Rosario, crece una comunidad que innova, emprende y transforma. <br /> 
               <span className='font-semibold'>Rosario TechWeek</span> es una semana para visibilizar el talento, activar ideas y construir conexiones.
             </p>
-          </FadeUp>
+          </FadeUp> */}
           
           {/* CTA Buttons */}
-          <FadeUp delay={0.6}>
+          <FadeUp delay={0.6} className='mb-24'>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button size="lg" href="https://lu.ma/rosariotechweek" target="_blank" className='w-full md:w-auto'>
                 Ver Agenda
@@ -60,14 +84,58 @@ export default function Hero() {
             </div>
           </FadeUp>
 
-          <FadeUp delay={0.8} className='flex justify-center mt-24'>
+          {/* <FadeUp delay={0.8} className='flex justify-center mt-24 mb-12'>
             <div className="animate-bounce">
               <div className="w-6 h-10 border-2 border-gray-300/50 flex justify-center rounded-2xl animate-pulse">
                 <div className="w-1 h-3 bg-gray-300/50 mt-2 animate-pulse"></div>
               </div>
             </div>
-          </FadeUp>
+          </FadeUp> */}
         </div>
+      </div>
+
+      {/* Infinite Horizontal Image Carousel */}
+      <div className="w-full overflow-hidden mb-32">
+        <motion.div
+          className="flex gap-20"
+          animate={{
+            x: [0, -1360], // Adjust based on total width of images (5 sponsors * 272px = 1360px)
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          style={{
+            width: "max-content",
+          }}
+        >
+          {/* First set of sponsor images */}
+          {mainSponsors.map((sponsor, i) => (
+            <div key={`sponsor-1-${i}`} className="flex-shrink-0 w-48 h-32 relative">
+              <Image
+                src={`/sponsors/main/${sponsor.img}`}
+                alt={sponsor.name}
+                fill
+                className="object-contain rounded-lg opacity-50 hover:opacity-100 transition"
+                sizes="(max-width: 768px) 192px, 192px"
+              />
+            </div>
+          ))}
+
+          {/* Duplicate set for seamless loop */}
+          {mainSponsors.map((sponsor, i) => (
+            <div key={`sponsor-2-${i}`} className="flex-shrink-0 w-48 h-32 relative">
+              <Image
+                src={`/sponsors/main/${sponsor.img}`}
+                alt={sponsor.name}
+                fill
+                className="object-contain rounded-lg opacity-50 hover:opacity-100 transition"
+                sizes="(max-width: 768px) 192px, 192px"
+              />
+            </div>
+          ))}
+        </motion.div>
       </div>
       
       {/* Scroll indicator */}

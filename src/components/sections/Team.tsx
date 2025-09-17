@@ -44,11 +44,11 @@ export default function Team() {
       role: 'Product & Innovation Strategist',
       img: 'sol.jpeg'
     },
-    {
-      name: 'Martín Gori',
-      role: 'Gerente Comercial @ Edilizia',
-      img: 'martin.jpeg'
-    },
+    // {
+    //   name: 'Martín Gori',
+    //   role: 'Gerente Comercial @ Edilizia',
+    //   img: 'martin.jpeg'
+    // },
   ]
 
   return (
