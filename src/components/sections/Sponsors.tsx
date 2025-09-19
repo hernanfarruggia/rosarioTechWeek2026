@@ -30,12 +30,12 @@ export default function Sponsors({ btnAction }: SponsorsProps) {
       img: 'renaiss.png'
     },
     {
-      name: 'Mepad',
-      img: 'mepad.png'
-    },
-    {
       name: 'The Hybrid',
       img: 'the-hybrid.png'
+    },
+    {
+      name: 'Banco Municipal de Rosario',
+      img: 'banco-municipal.png'
     },
   ]
 
@@ -64,6 +64,14 @@ export default function Sponsors({ btnAction }: SponsorsProps) {
       name: 'Materia Prima',
       img: 'materia-prima.png'
     },
+    {
+      name: 'Mujeres en Marketing',
+      img: 'mujeres-marketing.png'
+    },
+    {
+      name: 'CREA',
+      img: 'crea.png'
+    },
   ]
 
   const mediaPartners = [
@@ -78,6 +86,18 @@ export default function Sponsors({ btnAction }: SponsorsProps) {
     {
       name: 'Barra Libre',
       img: 'barra-libre.png'
+    },
+    {
+      name: 'Punto Biz',
+      img: 'punto-biz.png'
+    },
+    {
+      name: 'Popurri Digital',
+      img: 'popurri-digital.png'
+    },
+    {
+      name: 'Digital Week',
+      img: 'digital-week.png'
     },
   ]
 
@@ -97,6 +117,10 @@ export default function Sponsors({ btnAction }: SponsorsProps) {
     {
       name: 'Usina',
       img: 'usina.png'
+    },
+    {
+      name: 'Comunidad BirrIA',
+      img: 'comunidad-birria.png'
     },
   ]
 
