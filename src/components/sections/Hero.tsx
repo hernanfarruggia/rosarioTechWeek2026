@@ -20,8 +20,8 @@ export default function Hero() {
       img: 'renaiss.png'
     },
     {
-      name: 'Mepad',
-      img: 'mepad.png'
+      name: 'Banco Municipal de Rosario',
+      img: 'banco-municipal.png'
     },
     {
       name: 'The Hybrid',
