@@ -1,145 +1,62 @@
-import Image from 'next/image';
-import Button from '@/components/ui/Button';
-import FadeUp from '@/components/ui/FadeUp';
-import { Calendar1Icon } from 'lucide-react';
-import { motion } from 'framer-motion';
+'use client';
 
-export default function Hero() {
+import { useRef } from 'react';
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
+import Reveal from '@/components/ui/Reveal';
+import CTAButton from '@/components/ui/CTAButton';
+import Highlight from '@/components/ui/Highlight';
+import { meta } from '@/content/site';
 
-  const mainSponsors = [
-    {
-      name: 'InnLab',
-      img: 'innlab.png'
-    },
-    {
-      name: 'Universe',
-      img: 'universe.png'
-    },
-    {
-      name: 'Renaiss',
-      img: 'renaiss.png'
-    },
-    {
-      name: 'Banco Municipal de Rosario',
-      img: 'banco-municipal.png'
-    },
-    {
-      name: 'The Hybrid',
-      img: 'the-hybrid.png'
-    },
-  ]
+interface HeroProps {
+  btnAction: (interest: string) => void;
+}
+
+export default function Hero({ btnAction }: HeroProps) {
+  const ref = useRef<HTMLElement>(null);
+  const reduce = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
+  const y = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, 80]);
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center bg-accent-black overflow-hidden relative dot-matrix">
-      {/* Geometric background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary opacity-18 rounded-full blur-3xl animate-float-1"></div>
-        <div className="absolute top-1/2 -left-20 w-60 h-60 bg-secondary opacity-12 rounded-full blur-2xl animate-float-2"></div>
-        <div className="absolute bottom-20 right-1/4 w-40 h-40 bg-secondary opacity-10 rounded-full blur-xl animate-float-3"></div>
-        <div className="absolute -top-40 left-40 w-64 h-64 bg-primary opacity-10 rounded-full blur-3xl animate-float-1"></div>
+    <header ref={ref} className="hero theme-dark" id="hero">
+      <div className="bg-grid" aria-hidden="true" />
+      <motion.div
+        className="bg-glow"
+        aria-hidden="true"
+        style={{ y, background: 'radial-gradient(45% 40% at 75% 25%, rgba(255,106,0,0.22), transparent 70%)' }}
+      />
+      <div className="container">
+        <Reveal className="pills">
+          <span className="pill">{meta.edition}</span>
+          <span className="pill">{meta.dates}</span>
+          <span className="pill">{meta.location}</span>
+        </Reveal>
+        <Reveal delay={80}>
+          <h1 className="h-display">
+            Ya dimos el primer paso. Es tiempo de <Highlight>acelerar</Highlight>.
+          </h1>
+        </Reveal>
+        <Reveal delay={160}>
+          <p className="lead">
+            Potenciando el ecosistema tecnológico y emprendedor de Rosario. Cinco días para
+            visibilizar, celebrar y conectar el talento de la ciudad.
+          </p>
+        </Reveal>
+        <Reveal delay={240} className="actions">
+          <CTAButton variant="solid" size="lg" href={meta.luma} target="_blank">
+            Ver agenda
+          </CTAButton>
+          <CTAButton variant="outline" size="lg" onClick={() => btnAction('sponsor')}>
+            Ser sponsor
+          </CTAButton>
+          <CTAButton variant="ghost" size="lg" onClick={() => btnAction('venue')}>
+            Sumar evento
+          </CTAButton>
+        </Reveal>
       </div>
-      
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-24 text-center relative z-10">
-        <div className="max-w-6xl mx-auto flex flex-col">
-          <FadeUp className='flex justify-center'>
-            <div className="flex items-center justify-center gap-2 max-w-60 bg-primary/10 text-primary px-6 py-3 text-sm font-bold font-roboto border border-primary">
-              <Calendar1Icon className="w-4 h-4" />
-              23 - 28 Septiembre 2025
-            </div>
-          </FadeUp>
-
-          <FadeUp>
-            {/* Event Title */}
-            <div className='w-full h-48 md:h-96 relative my-6'>
-              <Image
-                src="/logo.svg"
-                alt="Rosario TechWeek Logo"
-                fill
-                priority
-                className='rotate-6'
-              />
-            </div>
-          </FadeUp>
-          
-          {/* Description */}
-          {/* <FadeUp delay={0.4} className='mb-8'>
-            <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              Desde Rosario, crece una comunidad que innova, emprende y transforma. <br /> 
-              <span className='font-semibold'>Rosario TechWeek</span> es una semana para visibilizar el talento, activar ideas y construir conexiones.
-            </p>
-          </FadeUp> */}
-          
-          {/* CTA Buttons */}
-          <FadeUp delay={0.6} className='mb-24'>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button size="lg" href="https://lu.ma/rosariotechweek" target="_blank" className='w-full md:w-auto'>
-                Ver Agenda
-              </Button>
-              <Button variant="outline-secondary" size="lg" href="#sponsors" className='w-full md:w-auto'>
-                Sumate como aliado
-              </Button>
-              <Button variant="outline-tertiary" size="lg" href="#anfitriones" className='w-full md:w-auto'>
-                Registrá tu evento!
-              </Button>
-            </div>
-          </FadeUp>
-
-          {/* <FadeUp delay={0.8} className='flex justify-center mt-24 mb-12'>
-            <div className="animate-bounce">
-              <div className="w-6 h-10 border-2 border-gray-300/50 flex justify-center rounded-2xl animate-pulse">
-                <div className="w-1 h-3 bg-gray-300/50 mt-2 animate-pulse"></div>
-              </div>
-            </div>
-          </FadeUp> */}
-        </div>
+      <div className="scrollcue">
+        Scroll <span aria-hidden="true">↓</span>
       </div>
-
-      {/* Infinite Horizontal Image Carousel */}
-      <div className="w-full overflow-hidden mb-32">
-        <motion.div
-          className="flex gap-20"
-          animate={{
-            x: [0, -1360], // Adjust based on total width of images (5 sponsors * 272px = 1360px)
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          style={{
-            width: "max-content",
-          }}
-        >
-          {/* First set of sponsor images */}
-          {mainSponsors.map((sponsor, i) => (
-            <div key={`sponsor-1-${i}`} className="flex-shrink-0 w-48 h-32 relative">
-              <Image
-                src={`/sponsors/main/${sponsor.img}`}
-                alt={sponsor.name}
-                fill
-                className="object-contain rounded-lg opacity-50 hover:opacity-100 transition"
-                sizes="(max-width: 768px) 192px, 192px"
-              />
-            </div>
-          ))}
-
-          {/* Duplicate set for seamless loop */}
-          {mainSponsors.map((sponsor, i) => (
-            <div key={`sponsor-2-${i}`} className="flex-shrink-0 w-48 h-32 relative">
-              <Image
-                src={`/sponsors/main/${sponsor.img}`}
-                alt={sponsor.name}
-                fill
-                className="object-contain rounded-lg opacity-50 hover:opacity-100 transition"
-                sizes="(max-width: 768px) 192px, 192px"
-              />
-            </div>
-          ))}
-        </motion.div>
-      </div>
-      
-      {/* Scroll indicator */}
-      
-    </section>
+    </header>
   );
 }

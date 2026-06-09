@@ -2,10 +2,10 @@ export default function StructuredData() {
   const eventStructuredData = {
     "@context": "https://schema.org",
     "@type": "Event",
-    "name": "Rosario TechWeek 2025",
-    "description": "La Rosario TechWeek es el punto de encuentro donde el talento tech de Rosario se visibiliza, conecta y proyecta hacia el futuro. Una semana completa de conferencias, networking y actividades tecnológicas.",
-    "startDate": "2025-09-23",
-    "endDate": "2025-09-30",
+    "name": "Rosario TechWeek 2026",
+    "description": "La Rosario TechWeek es el punto de encuentro donde el talento tech de Rosario se visibiliza, conecta y proyecta hacia el futuro. Cinco días de conferencias, networking y actividades tecnológicas — II edición.",
+    "startDate": "2026-10-19",
+    "endDate": "2026-10-23",
     "eventStatus": "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
     "location": {
@@ -38,7 +38,7 @@ export default function StructuredData() {
       "availability": "https://schema.org/InStock",
       "price": "0",
       "priceCurrency": "ARS",
-      "validFrom": "2025-01-01"
+      "validFrom": "2026-01-01"
     },
     "performer": {
       "@type": "Organization",
@@ -84,9 +84,9 @@ export default function StructuredData() {
   const websiteStructuredData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "Rosario TechWeek 2025",
+    "name": "Rosario TechWeek 2026",
     "url": "https://rosariotechweek.com",
-    "description": "Sitio web oficial de la Rosario TechWeek 2025",
+    "description": "Sitio web oficial de la Rosario TechWeek 2026",
     "publisher": {
       "@type": "Organization",
       "name": "Rosario TechWeek Organization"
@@ -112,14 +112,14 @@ export default function StructuredData() {
       {
         "@type": "ListItem",
         "position": 2,
-        "name": "Sobre el evento",
-        "item": "https://rosariotechweek.com#about"
+        "name": "Qué es",
+        "item": "https://rosariotechweek.com#que-es"
       },
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "Agenda",
-        "item": "https://rosariotechweek.com#agenda"
+        "name": "Edición 2025",
+        "item": "https://rosariotechweek.com#edicion-2025"
       }
     ]
   };

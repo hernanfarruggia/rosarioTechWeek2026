@@ -1,14 +1,36 @@
 import type { Metadata } from "next";
+import { Space_Grotesk, JetBrains_Mono, Roboto_Flex } from "next/font/google";
 import "./globals.css";
 import StructuredData from "@/components/StructuredData";
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-space-grotesk",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-jetbrains-mono",
+  display: "swap",
+});
+
+const robotoFlex = Roboto_Flex({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-roboto-flex",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://rosariotechweek.com'),
   title: {
-    template: '%s | Rosario TechWeek 2025',
-    default: 'Rosario TechWeek 2025 - Tecnología que transforma, comunidad que crea'
+    template: '%s | Rosario TechWeek 2026',
+    default: 'Rosario TechWeek 2026 - Es tiempo de acelerar'
   },
-  description: "La Rosario TechWeek es el punto de encuentro donde el talento tech de Rosario se visibiliza, conecta y proyecta hacia el futuro. Del 23 al 30 de septiembre 2025. Conferencias, networking, startups y tecnología en Santa Fe, Argentina.",
+  description: "Rosario TechWeek 2026 — II edición. Cinco días para visibilizar, celebrar y potenciar el ecosistema tecnológico y emprendedor de Rosario. Del 19 al 23 de octubre de 2026, Santa Fe, Argentina.",
   keywords: [
     "Rosario TechWeek",
     "tecnología Rosario",
@@ -17,19 +39,13 @@ export const metadata: Metadata = {
     "innovación Santa Fe",
     "emprendimiento tecnológico",
     "networking tech",
-    "desarrollo software",
-    "inteligencia artificial",
-    "blockchain",
-    "fintech Argentina"
+    "ecosistema emprendedor",
+    "Rosario Innovation Hub",
   ],
-  authors: [{ name: "Rosario TechWeek Organization" }],
+  authors: [{ name: "Rosario Innovation Hub" }],
   creator: "Rosario TechWeek",
   publisher: "Rosario TechWeek",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
+  formatDetection: { email: false, address: false, telephone: false },
   category: 'technology',
   classification: 'Conference, Technology Event',
   referrer: 'origin-when-cross-origin',
@@ -46,56 +62,40 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: 'https://rosariotechweek.com',
-    languages: {
-      'es-AR': 'https://rosariotechweek.com',
-    },
+    languages: { 'es-AR': 'https://rosariotechweek.com' },
   },
   openGraph: {
     type: 'website',
     locale: 'es_AR',
     url: 'https://rosariotechweek.com',
-    title: 'Rosario TechWeek 2025 - Tecnología que transforma, comunidad que crea',
-    description: 'La Rosario TechWeek es el punto de encuentro donde el talento tech de Rosario se visibiliza, conecta y proyecta hacia el futuro. Del 23 al 30 de septiembre 2025.',
-    siteName: 'Rosario TechWeek 2025',
+    title: 'Rosario TechWeek 2026 - Es tiempo de acelerar',
+    description: 'II edición. Del 19 al 23 de octubre de 2026, Rosario, Argentina. Cinco días para visibilizar, celebrar y potenciar el ecosistema tecnológico y emprendedor.',
+    siteName: 'Rosario TechWeek 2026',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Rosario TechWeek 2025 - Tecnología que transforma, comunidad que crea',
+        alt: 'Rosario TechWeek 2026 - Es tiempo de acelerar',
         type: 'image/jpeg',
       },
-      {
-        url: '/og-image-square.jpg',
-        width: 1200,
-        height: 1200,
-        alt: 'Rosario TechWeek 2025',
-        type: 'image/jpeg',
-      }
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    site: '@RosarioTechWeek',
-    creator: '@RosarioTechWeek',
-    title: 'Rosario TechWeek 2025 - Tecnología que transforma, comunidad que crea',
-    description: 'La Rosario TechWeek es el punto de encuentro donde el talento tech de Rosario se visibiliza, conecta y proyecta hacia el futuro. Del 23 al 30 de septiembre 2025.',
+    site: '@rosariotechweek',
+    creator: '@rosariotechweek',
+    title: 'Rosario TechWeek 2026 - Es tiempo de acelerar',
+    description: 'II edición. Del 19 al 23 de octubre de 2026, Rosario, Argentina.',
     images: ['/twitter-image.jpg'],
   },
-  verification: {
-    google: 'google-verification-code', // Reemplazar con código real
-    yandex: 'yandex-verification-code', // Reemplazar con código real
-    yahoo: 'yahoo-verification-code', // Reemplazar con código real
-  },
   other: {
-    'theme-color': '#667eea',
-    'color-scheme': 'light',
+    'theme-color': '#0a0a0a',
+    'color-scheme': 'dark',
     'mobile-web-app-capable': 'yes',
     'apple-mobile-web-app-capable': 'yes',
-    'apple-mobile-web-app-status-bar-style': 'default',
+    'apple-mobile-web-app-status-bar-style': 'black-translucent',
     'format-detection': 'telephone=no',
-    'msapplication-TileColor': '#667eea',
-    'msapplication-config': '/browserconfig.xml',
   },
 };
 
@@ -105,24 +105,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
+    <html lang="es" className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} ${robotoFlex.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-        <meta name="theme-color" content="#667eea" />
+        <meta name="theme-color" content="#0a0a0a" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="Rosario TechWeek 2025" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="Rosario TechWeek 2026" />
         <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="application-name" content="Rosario TechWeek 2025" />
-        <meta name="msapplication-TileColor" content="#667eea" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#667eea" />
+        <meta name="application-name" content="Rosario TechWeek 2026" />
         <link rel="shortcut icon" href="/favicon.ico" />
-        <link rel="manifest" href="/manifest.json" />
       </head>
       <body className="antialiased">
         <StructuredData />

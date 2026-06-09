@@ -48,11 +48,11 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/evento',
-        destination: '/#about',
+        destination: '/#que-es',
       },
       {
         source: '/programa',
-        destination: '/#agenda',
+        destination: '/#edicion-2025',
       },
     ];
   },

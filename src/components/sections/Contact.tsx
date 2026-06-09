@@ -1,9 +1,10 @@
 'use client';
 
-import Button from '@/components/ui/Button';
-import FadeUp from '@/components/ui/FadeUp';
-import { InstagramIcon, LinkedinIcon, MessageCircleIcon, TwitterIcon } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import SectionShell from '@/components/ui/SectionShell';
+import Reveal from '@/components/ui/Reveal';
+import CTAButton from '@/components/ui/CTAButton';
+import { socials } from '@/content/site';
 
 interface ContactProps {
   message?: string;
@@ -17,22 +18,24 @@ export default function Contact({ message, interest }: ContactProps) {
     phone: '',
     organization: '',
     interest: interest || '',
-    message: message || ''
+    message: message || '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   useEffect(() => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       interest: interest || prev.interest,
-      message: message || prev.message
+      message: message || prev.message,
     }));
   }, [message, interest]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -43,22 +46,13 @@ export default function Contact({ message, interest }: ContactProps) {
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
 
       if (response.ok) {
         setSubmitStatus('success');
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          organization: '',
-          interest: '',
-          message: ''
-        });
+        setFormData({ name: '', email: '', phone: '', organization: '', interest: '', message: '' });
       } else {
         setSubmitStatus('error');
       }
@@ -70,172 +64,88 @@ export default function Contact({ message, interest }: ContactProps) {
     }
   };
 
-  const socialLinks = [
-    { name: "Twitter", icon: TwitterIcon, href: "https://x.com/rosariotechweek" },
-    { name: "LinkedIn", icon: LinkedinIcon, href: "https://www.linkedin.com/company/rosario-tech-week" },
-    { name: "Instagram", icon: InstagramIcon, href: "https://www.instagram.com/rosariotechweek" },
-    { name: "WhatsApp", icon: MessageCircleIcon, href: "https://docs.google.com/forms/d/e/1FAIpQLSdo9yMIaoqnwnLhGsBHmKPdS37GsQQSDMalqi1Ulpzh_S3s2Q/viewform" }
-  ];
-
   return (
-    <section id="contacto" className="py-20 bg-black">
-      <div className="container mx-auto px-6 my-24 flex flex-col gap-16">
-        <FadeUp className='flex flex-col gap-8'>
-          <h2 className="text-6xl md:text-8xl text-white">
-            Contacto
-          </h2>
-          <h3 className="text-2xl sm:text-3xl text-primary">
-            La innovación se activa en comunidad. ¿Te sumás?
-          </h3>
-          <p className="text-white text-xl font-medium">
-            Rosario TechWeek 2025 será un hito colectivo. Estamos convocando a empresas, 
-            universidades, ONGs, inversores y gobiernos a sumar su energía, ideas y espacios.
-          </p>
-        </FadeUp>
+    <SectionShell id="contacto" index="09" eyebrow="Contacto" theme="dark" className="contact">
+      <Reveal>
+        <h2 className="h-display" style={{ marginBottom: '1rem' }}>Contacto</h2>
+      </Reveal>
+      <Reveal delay={80}>
+        <p className="kicker">La innovación se activa en comunidad. ¿Te sumás?</p>
+      </Reveal>
+      <Reveal delay={120}>
+        <p className="lead" style={{ maxWidth: '56ch', marginBottom: '3rem' }}>
+          Convocamos a empresas, universidades, ONGs, inversores y gobiernos a sumar su energía,
+          ideas y espacios.
+        </p>
+      </Reveal>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start mb-12">
-          <FadeUp delay={0.2}>
-            <h4 className="text-2xl text-white mb-6">
-              Escribinos:
-            </h4>
-            <form className="space-y-6" onSubmit={handleSubmit}>
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-accent-gray mb-2">
-                    Nombre *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 focus:border-transparent transition-colors"
-                    placeholder="Tu nombre completo"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-accent-gray mb-2">
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 focus:border-transparent transition-colors"
-                    placeholder="tu@email.com"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-accent-gray mb-2">
-                    Teléfono
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 focus:border-transparent transition-colors"
-                    placeholder="+54 341 123 4567"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="organization" className="block text-sm font-medium text-accent-gray mb-2">
-                    Organización
-                  </label>
-                  <input
-                    type="text"
-                    id="organization"
-                    name="organization"
-                    value={formData.organization}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 focus:border-transparent transition-colors"
-                    placeholder="Empresa, startup, universidad..."
-                  />
-                </div>
-                <div>
-                  <label htmlFor="interest" className="block text-sm font-medium text-accent-gray mb-2">
-                    Interés
-                  </label>
-                  <select
-                    id="interest"
-                    name="interest"
-                    value={formData.interest}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 focus:border-transparent transition-colors"
-                  >
-                    <option value="">Selecciona una opción</option>
-                    <option value="sponsor">Ser sponsor</option>
-                    <option value="speaker">Ser speaker</option>
-                    <option value="venue">Ofrecer espacio/venue</option>
-                    <option value="attendee">Asistir al evento</option>
-                    <option value="press">Acreditación de prensa</option>
-                    <option value="other">Otro</option>
-                  </select>
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-accent-gray mb-2">
-                    Mensaje *
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 focus:border-transparent transition-colors resize-vertical"
-                    placeholder="Contanos cómo querés ser parte de la Rosario TechWeek 2025"
-                  ></textarea>
-                </div>
-                {submitStatus === 'success' && (
-                  <div className="p-4 bg-green-800/50 border border-green-800 text-green-600 text-medium">
-                    ¡Mensaje enviado correctamente! Te contactaremos pronto.
-                  </div>
-                )}
-                {submitStatus === 'error' && (
-                  <div className="p-4 bg-red-800/30 border border-red-800 text-red-600 text-medium">
-                    Error al enviar el mensaje. Por favor, intentá de nuevo.
-                  </div>
-                )}
-                <Button 
-                  type="submit" 
-                  size="lg" 
-                  className={`w-full ${isSubmitting ? 'cursor-not-allowed bg-primary/30' : 'hover:cursor-pointer'}`}
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
-                </Button>
-              </form>
-          </FadeUp>
-          
-          <FadeUp delay={0.2}>
-            <h4 className="text-2xl font-bold text-accent-black mb-6">
-              Conectá con nosotros
-            </h4>
-            <p className="text-white mb-6">
-              Seguinos en redes sociales para estar al día con todas las novedades, 
-              anuncios y contenido exclusivo de la Rosario TechWeek 2025.
-            </p>
-            <div className="grid grid-cols-2 gap-4">
-              {socialLinks.map((social, index) => {
-                const IconComponent = social.icon;
-                return (
-                  <Button key={index} variant='outline-tertiary' size="lg" href={social.href} target="_blank" className='w-full md:w-auto'>
-                      <IconComponent className='w-6 h-6 mr-2' />
-                      {social.name}
-                  </Button>
-                );
-              })}
+      <div className="contact-grid">
+        <Reveal>
+          <form onSubmit={handleSubmit} noValidate>
+            <div className="field-2">
+              <div className="field">
+                <label htmlFor="f-name">Nombre *</label>
+                <input id="f-name" name="name" value={formData.name} onChange={handleInputChange} placeholder="Tu nombre completo" required />
+              </div>
+              <div className="field">
+                <label htmlFor="f-email">Email *</label>
+                <input id="f-email" type="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="tu@email.com" required />
+              </div>
+              <div className="field">
+                <label htmlFor="f-phone">Teléfono</label>
+                <input id="f-phone" type="tel" name="phone" value={formData.phone} onChange={handleInputChange} placeholder="+54 341 123 4567" />
+              </div>
+              <div className="field">
+                <label htmlFor="f-org">Organización</label>
+                <input id="f-org" name="organization" value={formData.organization} onChange={handleInputChange} placeholder="Empresa, startup, universidad..." />
+              </div>
             </div>
-          </FadeUp>
-        </div>
+            <div className="field">
+              <label htmlFor="f-interest">Interés</label>
+              <select id="f-interest" name="interest" value={formData.interest} onChange={handleInputChange}>
+                <option value="">Seleccioná una opción</option>
+                <option value="sponsor">Ser sponsor</option>
+                <option value="speaker">Ser speaker</option>
+                <option value="venue">Ofrecer espacio / venue</option>
+                <option value="attendee">Asistir al evento</option>
+                <option value="press">Acreditación de prensa</option>
+                <option value="other">Otro</option>
+              </select>
+            </div>
+            <div className="field">
+              <label htmlFor="f-message">Mensaje *</label>
+              <textarea id="f-message" name="message" value={formData.message} onChange={handleInputChange} placeholder="Contanos cómo querés ser parte" required />
+            </div>
 
+            {submitStatus === 'success' && (
+              <div className="form-note ok">¡Mensaje enviado! Te contactaremos pronto.</div>
+            )}
+            {submitStatus === 'error' && (
+              <div className="form-note err">No pudimos enviar el mensaje. Intentá de nuevo.</div>
+            )}
+
+            <CTAButton type="submit" variant="solid" size="lg" disabled={isSubmitting}>
+              {isSubmitting ? 'Enviando…' : 'Enviar mensaje'}
+            </CTAButton>
+          </form>
+        </Reveal>
+
+        <Reveal delay={120}>
+          <div>
+            <h3 className="h3" style={{ color: '#fff', marginBottom: '1rem' }}>Conectá con nosotros</h3>
+            <p className="lead" style={{ fontSize: 'var(--text-body)', marginBottom: '1.5rem' }}>
+              Seguinos en redes para estar al día con novedades, anuncios y contenido exclusivo.
+            </p>
+            <div className="socials">
+              {socials.map((s) => (
+                <CTAButton key={s.name} variant="outline" href={s.href} target="_blank">
+                  {s.name}
+                </CTAButton>
+              ))}
+            </div>
+          </div>
+        </Reveal>
       </div>
-    </section>
+    </SectionShell>
   );
 }
