@@ -5,7 +5,9 @@ import StatNumber from '@/components/ui/StatNumber';
 import Marquee from '@/components/ui/Marquee';
 import CTAButton from '@/components/ui/CTAButton';
 import SplitText from '@/components/ui/SplitText';
-import { sponsors2025 } from '@/content/site';
+import ReelVideo from '@/components/ui/ReelVideo';
+import PhotoCarousels from '@/components/ui/PhotoCarousels';
+import { sponsors2025, pastEvents } from '@/content/site';
 
 export default function PreviousEdition() {
   return (
@@ -78,14 +80,16 @@ export default function PreviousEdition() {
         <Reveal delay={120}>
           <div>
             <div className="sub-eyebrow">— Reel 2025</div>
-            <div className="reel" style={{ maxWidth: '300px' }}>
-              <img src="/1.jpeg" alt="Rosario TechWeek 2025" />
-              <div className="play"><span aria-hidden="true">▶</span></div>
-              <div className="tag">Placeholder · 9:16</div>
-            </div>
+            <ReelVideo
+              src="/video/reel-2025.mp4"
+              poster="/video/reel-2025-poster.jpg"
+              tag="Rosario TechWeek 2025"
+            />
           </div>
         </Reveal>
       </div>
+
+      <PhotoCarousels images={pastEvents} />
     </SectionShell>
   );
 }

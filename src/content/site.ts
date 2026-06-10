@@ -41,6 +41,16 @@ export const sponsors2025: Sponsor[] = [
   { name: "Golosetti", img: "/sponsors/community/golosetti.png" },
 ];
 
+/* Fotos de eventos pasados — /public/past-events/*.jpg (se croppean a 16:9) */
+export const pastEvents: string[] = [
+  "/past-events/1.jpg", "/past-events/2.jpg", "/past-events/3.jpg", "/past-events/4.jpg",
+  "/past-events/5.jpg", "/past-events/6.jpg", "/past-events/7.jpg", "/past-events/8.jpg",
+  "/past-events/9.jpg", "/past-events/10.jpg", "/past-events/11.jpg", "/past-events/12.jpg",
+  "/past-events/13.jpg", "/past-events/14.jpg", "/past-events/15.jpg", "/past-events/16.jpg",
+  "/past-events/17.jpg", "/past-events/18.jpg", "/past-events/19.jpg", "/past-events/20.jpg",
+  "/past-events/22.jpg", "/past-events/23.jpg", "/past-events/24.jpg",
+];
+
 export const team: TeamMember[] = [
   { name: "Luisina Gala Golosetti", role: "CEO @ Golosetti Abogados", img: "/team/luisina.jpeg" },
   { name: "Gaspar Rodriguez", role: "Co-Founder @ Fullfoto & Overboost", img: "/team/gaspar.jpeg" },
