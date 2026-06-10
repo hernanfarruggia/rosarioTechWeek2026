@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { meta } from '@/content/site';
 
 const navItems = [
   { name: '¿Qué es?', href: '#que-es' },
@@ -39,9 +38,6 @@ export default function Navigation() {
             </a>
           ))}
         </div>
-        <a href={meta.luma} target="_blank" rel="noopener noreferrer" className="btn btn-solid btn-sm nav-cta">
-          Registrate
-        </a>
         <button
           className="nav-burger"
           aria-label="Abrir menú"
