@@ -2,7 +2,7 @@ import SectionShell from '@/components/ui/SectionShell';
 import Reveal from '@/components/ui/Reveal';
 import Card from '@/components/ui/Card';
 import CTAButton from '@/components/ui/CTAButton';
-import Highlight from '@/components/ui/Highlight';
+import SplitText from '@/components/ui/SplitText';
 
 interface PressProps {
   btnAction: (interest: string) => void;
@@ -16,26 +16,39 @@ const offerings = [
 
 export default function Press({ btnAction }: PressProps) {
   return (
-    <SectionShell id="prensa" index="07" eyebrow="Prensa" theme="dark">
-      <Reveal>
-        <h2 className="h2" style={{ maxWidth: '18ch', marginBottom: '1.5rem' }}>
-          Acreditación de <Highlight>prensa</Highlight>.
-        </h2>
-      </Reveal>
-      <div className="grid grid-auto" style={{ marginBottom: '2.5rem' }}>
-        {offerings.map((o, i) => (
-          <Reveal key={o.title} delay={i * 80}>
-            <Card index={o.idx} title={o.title}>
-              <p className="c-body">{o.body}</p>
-            </Card>
+    <SectionShell id="prensa" eyebrow="Prensa" theme="dark" watermark="Prensa">
+      <div className="split">
+        <div className="split-sticky">
+          <SplitText
+            as="h2"
+            className="display-xl"
+            style={{ fontSize: 'clamp(2.5rem, 7vw, 5rem)', maxWidth: '12ch' }}
+            variant="blur"
+            text="Acreditate como prensa."
+            highlight="prensa"
+          />
+          <Reveal delay={140}>
+            <p className="lead" style={{ marginTop: '1.5rem' }}>
+              Si cubrís innovación, tecnología y emprendimiento, sumate a la cobertura oficial.
+            </p>
+            <div style={{ marginTop: '2rem' }}>
+              <CTAButton variant="solid" size="lg" onClick={() => btnAction('press')}>
+                Acreditarme como prensa
+              </CTAButton>
+            </div>
           </Reveal>
-        ))}
+        </div>
+
+        <div className="stack">
+          {offerings.map((o, i) => (
+            <Reveal key={o.title} delay={i * 100}>
+              <Card index={o.idx} title={o.title}>
+                <p className="c-body">{o.body}</p>
+              </Card>
+            </Reveal>
+          ))}
+        </div>
       </div>
-      <Reveal>
-        <CTAButton variant="solid" size="lg" onClick={() => btnAction('press')}>
-          Acreditarme como prensa
-        </CTAButton>
-      </Reveal>
     </SectionShell>
   );
 }

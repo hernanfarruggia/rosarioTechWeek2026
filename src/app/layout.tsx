@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk, JetBrains_Mono, Roboto_Flex } from "next/font/google";
 import "./globals.css";
 import StructuredData from "@/components/StructuredData";
+import SiteBackground from "@/components/ui/SiteBackground";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -117,6 +118,7 @@ export default function RootLayout({
         <link rel="shortcut icon" href="/favicon.ico" />
       </head>
       <body className="antialiased">
+        <SiteBackground />
         <StructuredData />
         {children}
       </body>

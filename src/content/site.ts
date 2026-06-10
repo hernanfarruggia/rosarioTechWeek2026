@@ -9,7 +9,7 @@ export type TeamMember = { name: string; role: string; img: string };
 export type Social = { name: string; href: string };
 
 export const meta = {
-  edition: "II Edición",
+  edition: "2da Edición",
   dates: "19–23 Octubre 2026",
   location: "Rosario, Argentina",
   luma: "https://lu.ma/rosariotechweek",
@@ -20,7 +20,7 @@ export const stats2025: Stat[] = [
   { value: "32", label: "Eventos" },
   { value: "14", label: "Locaciones" },
   { value: "40", label: "Empresas" },
-  { value: "1.500", label: "Inscriptos", accent: true },
+  { value: "+1.500", label: "Inscriptos", accent: true },
   { value: "15", label: "Menciones en prensa" },
   { value: "+$125M", label: "Impacto económico", accent: true },
 ];
@@ -41,12 +41,22 @@ export const sponsors2025: Sponsor[] = [
   { name: "Golosetti", img: "/sponsors/community/golosetti.png" },
 ];
 
+/* Fotos de eventos pasados — /public/past-events/*.jpg (se croppean a 16:9) */
+export const pastEvents: string[] = [
+  "/past-events/1.jpg", "/past-events/2.jpg", "/past-events/3.jpg", "/past-events/4.jpg",
+  "/past-events/5.jpg", "/past-events/6.jpg", "/past-events/7.jpg", "/past-events/8.jpg",
+  "/past-events/9.jpg", "/past-events/10.jpg", "/past-events/11.jpg", "/past-events/12.jpg",
+  "/past-events/13.jpg", "/past-events/14.jpg", "/past-events/15.jpg", "/past-events/16.jpg",
+  "/past-events/17.jpg", "/past-events/18.jpg", "/past-events/19.jpg", "/past-events/20.jpg",
+  "/past-events/22.jpg", "/past-events/23.jpg", "/past-events/24.jpg",
+];
+
 export const team: TeamMember[] = [
   { name: "Luisina Gala Golosetti", role: "CEO @ Golosetti Abogados", img: "/team/luisina.jpeg" },
   { name: "Gaspar Rodriguez", role: "Co-Founder @ Fullfoto & Overboost", img: "/team/gaspar.jpeg" },
   { name: "Nicolas Davobe", role: "Co-Founder @ We Are Ginkgo", img: "/team/nicolas.jpeg" },
   { name: "Gabriela Giorgio", role: "Growth & Marketing Consultant", img: "/team/gabriela.jpeg" },
-  { name: "Hernán Farruggia", role: "Co-Founder @ Kadre", img: "/team/hernan.jpeg" },
+  { name: "Hernán Farruggia", role: "Software Engineer & AI Consultant", img: "/team/hernan.jpeg" },
   { name: "Bruno Ruyu", role: "Co-Founder & CEO @ Teramot", img: "/team/bruno.jpeg" },
   { name: "Damian Silva", role: "Innovation & R+D @ CREA", img: "/team/damian.jpeg" },
   { name: "Sol Ariaca", role: "Product & Innovation Strategist", img: "/team/sol.jpeg" },

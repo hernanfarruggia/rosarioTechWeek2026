@@ -1,10 +1,10 @@
 'use client';
 
 import { useRef } from 'react';
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import Reveal from '@/components/ui/Reveal';
-import CTAButton from '@/components/ui/CTAButton';
+import SplitText from '@/components/ui/SplitText';
 import Highlight from '@/components/ui/Highlight';
+import CTAButton from '@/components/ui/CTAButton';
 import { meta } from '@/content/site';
 
 interface HeroProps {
@@ -13,36 +13,52 @@ interface HeroProps {
 
 export default function Hero({ btnAction }: HeroProps) {
   const ref = useRef<HTMLElement>(null);
-  const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
-  const y = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, 80]);
+
+  const onMove = (e: React.MouseEvent<HTMLElement>) => {
+    const el = ref.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    el.style.setProperty('--mx', `${((e.clientX - r.left) / r.width) * 100}%`);
+    el.style.setProperty('--my', `${((e.clientY - r.top) / r.height) * 100}%`);
+  };
 
   return (
-    <header ref={ref} className="hero theme-dark" id="hero">
-      <div className="bg-grid" aria-hidden="true" />
-      <motion.div
-        className="bg-glow"
+    <header ref={ref} className="hero theme-dark" id="hero" onMouseMove={onMove}>
+      <div
+        className="hero-glow"
         aria-hidden="true"
-        style={{ y, background: 'radial-gradient(45% 40% at 75% 25%, rgba(255,106,0,0.22), transparent 70%)' }}
+        style={{
+          background:
+            'radial-gradient(38% 36% at var(--mx, 70%) var(--my, 28%), rgba(255,106,0,0.26), transparent 70%)',
+        }}
       />
+
       <div className="container">
-        <Reveal className="pills">
+        <Reveal trigger="load" delay={150} className="pills">
           <span className="pill">{meta.edition}</span>
           <span className="pill">{meta.dates}</span>
           <span className="pill">{meta.location}</span>
         </Reveal>
-        <Reveal delay={80}>
-          <h1 className="h-display">
-            Ya dimos el primer paso. Es tiempo de <Highlight>acelerar</Highlight>.
-          </h1>
-        </Reveal>
-        <Reveal delay={160}>
-          <p className="lead">
-            Potenciando el ecosistema tecnológico y emprendedor de Rosario. Cinco días para
+
+        <SplitText
+          as="h1"
+          className="display-xl"
+          style={{ fontSize: 'clamp(3rem, 7vw, 5rem)' }}
+          variant="words"
+          trigger="load"
+          delay={300}
+          text="Potenciando el ecosistema emprendedor de Rosario."
+          highlight="Rosario"
+        />
+
+        <Reveal trigger="load" delay={650}>
+          <p className="lead" style={{ marginTop: '1.75rem' }}>
+            Ya dimos el primer paso. Es tiempo de <Highlight>acelerar</Highlight>. Cinco días para
             visibilizar, celebrar y conectar el talento de la ciudad.
           </p>
         </Reveal>
-        <Reveal delay={240} className="actions">
+
+        <Reveal trigger="load" delay={800} className="actions">
           <CTAButton variant="solid" size="lg" href={meta.luma} target="_blank">
             Ver agenda
           </CTAButton>
@@ -54,6 +70,7 @@ export default function Hero({ btnAction }: HeroProps) {
           </CTAButton>
         </Reveal>
       </div>
+
       <div className="scrollcue">
         Scroll <span aria-hidden="true">↓</span>
       </div>
