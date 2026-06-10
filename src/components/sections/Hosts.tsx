@@ -9,9 +9,9 @@ interface HostsProps {
 }
 
 const options = [
-  { idx: '— 01', title: 'Ser venue', body: 'Abrí las puertas de tu espacio y recibí un evento de la semana.', interest: 'venue' },
-  { idx: '— 02', title: 'Ser speaker', body: 'Compartí tu conocimiento con la comunidad en charlas y paneles.', interest: 'speaker' },
-  { idx: '— 03', title: 'Sumar evento', body: 'Agregá tu propio evento al calendario oficial de la TechWeek.', interest: 'venue' },
+  { idx: '— 01', title: 'Ofrecer venue', body: 'Abrí las puertas de tu espacio y recibí un evento de la semana. Oficinas, coworkings, bares, espacios culturales, centros de convenciones, etc.', interest: 'venue' },
+  { idx: '— 02', title: 'Ser speaker', body: 'Compartí tu conocimiento con la comunidad en charlas y paneles. Referentes, expertos y líderes de la industria.', interest: 'speaker' },
+  { idx: '— 03', title: 'Sumar evento', body: 'Agregá tu propio evento al calendario oficial de la TechWeek. Charlas, talleres, paneles, conferencias, etc.', interest: 'event' },
 ];
 
 export default function Hosts({ btnAction }: HostsProps) {

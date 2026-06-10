@@ -1,4 +1,7 @@
-import type { ReactNode } from 'react';
+'use client';
+
+import { useRef, type ReactNode } from 'react';
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import Parallax from './Parallax';
 
 interface SectionShellProps {
@@ -14,9 +17,10 @@ interface SectionShellProps {
 }
 
 /**
- * SectionShell — container for every section. Dark sections are transparent so
- * the global canvas (grid + glows) shows through; light sections are floating
- * white panels. Renders the eyebrow row + an optional giant watermark.
+ * SectionShell — container for every section. Sections are opaque panels pinned
+ * to the top (sticky stack); as you scroll, the next panel slides up and covers
+ * this one. While being covered, the outgoing panel dims + scales down a touch
+ * to read as depth. Themes alternate black/white for the color-invert effect.
  */
 export default function SectionShell({
   id,
@@ -28,11 +32,25 @@ export default function SectionShell({
   className = '',
   children,
 }: SectionShellProps) {
+  const ref = useRef<HTMLElement>(null);
+  const reduce = useReducedMotion();
+  // last viewport of travel: 0 = section bottom at viewport bottom, 1 = section
+  // bottom at viewport top — i.e. the window where the next panel covers it.
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['end end', 'end start'] });
+  const scale = useTransform(scrollYProgress, [0, 1], reduce ? [1, 1] : [1, 0.95]);
+  const brightness = useTransform(scrollYProgress, [0, 1], reduce ? [1, 1] : [1, 0.78]);
+  const filter = useTransform(brightness, (b) => `brightness(${b})`);
+
   return (
-    <section id={id} className={`section theme-${theme} ${className}`.trim()}>
+    <motion.section
+      ref={ref}
+      id={id}
+      className={`section theme-${theme} ${className}`.trim()}
+      style={{ scale, filter, transformOrigin: '50% 0%' }}
+    >
       {theme === 'light' && <div className="bg-grid" aria-hidden="true" />}
       {watermark && (
-        <Parallax speed={0.18} className="watermark" aria-hidden>
+        <Parallax speed={0.12} className="watermark" aria-hidden>
           {watermark}
         </Parallax>
       )}
@@ -56,6 +74,6 @@ export default function SectionShell({
         </div>
         {children}
       </div>
-    </section>
+    </motion.section>
   );
 }

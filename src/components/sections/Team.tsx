@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Highlight from '@/components/ui/Highlight';
 import SectionShell from '@/components/ui/SectionShell';
 import Reveal from '@/components/ui/Reveal';
 import SplitText from '@/components/ui/SplitText';
@@ -17,7 +18,7 @@ export default function Team() {
       />
       <Reveal delay={100}>
         <p className="lead" style={{ maxWidth: '48ch', marginBottom: '3.5rem' }}>
-          Las personas detrás de la Rosario TechWeek.
+          Las personas detrás de la Rosario TechWeek. Organizada por <Highlight>El Hub Rosario Innovation</Highlight> — la comunidad de referencia del ecosistema tech y emprendedor de la ciudad.
         </p>
       </Reveal>
       <div className="team-grid">

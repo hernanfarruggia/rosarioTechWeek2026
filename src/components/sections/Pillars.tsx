@@ -4,9 +4,21 @@ import Card from '@/components/ui/Card';
 import SplitText from '@/components/ui/SplitText';
 
 const pillars = [
-  { idx: '— 01', title: 'Conocimiento', body: 'Charlas, talleres y paneles con referentes que comparten lo que saben.' },
-  { idx: '— 02', title: 'Networking', body: 'Conexiones reales entre quienes construyen el futuro de la región.' },
-  { idx: '— 03', title: 'Negocios', body: 'Oportunidades concretas: alianzas, inversión y crecimiento.' },
+  {
+    idx: '— 01',
+    title: 'Conocimiento',
+    body: 'Charlas, talleres y paneles con referentes que comparten lo que saben. Cinco días de aprendizaje práctico sobre tecnología, producto y negocio, pensados para que te lleves ideas aplicables desde el primer evento.',
+  },
+  {
+    idx: '— 02',
+    title: 'Networking',
+    body: 'Conexiones reales entre quienes construyen el futuro de la región. Founders, inversores, talento técnico y empresas en un mismo espacio: las relaciones que nacen acá son las que después mueven proyectos.',
+  },
+  {
+    idx: '— 03',
+    title: 'Negocios',
+    body: 'Oportunidades concretas: alianzas, inversión y crecimiento. Un punto de encuentro para cerrar acuerdos, encontrar socios y abrir puertas que aceleren tu próximo paso en el ecosistema.',
+  },
 ];
 
 export default function Pillars() {

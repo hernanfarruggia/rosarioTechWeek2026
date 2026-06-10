@@ -20,14 +20,17 @@ export default function About() {
             className="h2"
             style={{ marginBottom: '1.5rem' }}
             variant="words"
-            text="Una serie de eventos para visibilizar el ecosistema."
-            highlight="visibilizar"
+            text="Una semana de eventos para posicionar el ecosistema."
+            highlight="posicionar"
           />
           <Reveal delay={120}>
-            <p className="lead">
-              La Tech Week es una serie de eventos a lo largo de varios días para{' '}
+            <p className="lead" style={{ marginBottom: '1.5rem' }}>
+              La Tech Week es una semana de eventos descentralizados para{' '}
               <strong>visibilizar, celebrar y potenciar</strong> el ecosistema tecnológico y
-              emprendedor de una ciudad — posicionando a Rosario como hub regional.
+              emprendedor de la ciudad — posicionando a Rosario como el epicentro y hub de la innovación regional.
+            </p>
+            <p className="lead">
+              Startups, empresas tech, industria tradicional, universidades e inversores comparten agenda durante 5 días para conectar, aprender y hacer negocios reales.
             </p>
           </Reveal>
         </div>

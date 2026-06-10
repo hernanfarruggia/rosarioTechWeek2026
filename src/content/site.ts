@@ -9,7 +9,7 @@ export type TeamMember = { name: string; role: string; img: string };
 export type Social = { name: string; href: string };
 
 export const meta = {
-  edition: "II Edición",
+  edition: "2da Edición",
   dates: "19–23 Octubre 2026",
   location: "Rosario, Argentina",
   luma: "https://lu.ma/rosariotechweek",
@@ -20,7 +20,7 @@ export const stats2025: Stat[] = [
   { value: "32", label: "Eventos" },
   { value: "14", label: "Locaciones" },
   { value: "40", label: "Empresas" },
-  { value: "1.500", label: "Inscriptos", accent: true },
+  { value: "+1.500", label: "Inscriptos", accent: true },
   { value: "15", label: "Menciones en prensa" },
   { value: "+$125M", label: "Impacto económico", accent: true },
 ];
@@ -46,7 +46,7 @@ export const team: TeamMember[] = [
   { name: "Gaspar Rodriguez", role: "Co-Founder @ Fullfoto & Overboost", img: "/team/gaspar.jpeg" },
   { name: "Nicolas Davobe", role: "Co-Founder @ We Are Ginkgo", img: "/team/nicolas.jpeg" },
   { name: "Gabriela Giorgio", role: "Growth & Marketing Consultant", img: "/team/gabriela.jpeg" },
-  { name: "Hernán Farruggia", role: "Co-Founder @ Kadre", img: "/team/hernan.jpeg" },
+  { name: "Hernán Farruggia", role: "Software Engineer & AI Consultant", img: "/team/hernan.jpeg" },
   { name: "Bruno Ruyu", role: "Co-Founder & CEO @ Teramot", img: "/team/bruno.jpeg" },
   { name: "Damian Silva", role: "Innovation & R+D @ CREA", img: "/team/damian.jpeg" },
   { name: "Sol Ariaca", role: "Product & Innovation Strategist", img: "/team/sol.jpeg" },

@@ -52,9 +52,27 @@ export default function PreviousEdition() {
             <p className="lead" style={{ marginBottom: '1.5rem' }}>
               &ldquo;Rosario muestra todo su potencial de innovación, startups y tecnología.&rdquo;
             </p>
-            <CTAButton variant="ghost" href="https://www.lacapital.com.ar" target="_blank">
-              Leer la nota de La Capital
-            </CTAButton>
+            <div className='flex flex-col gap-8 items-start'>
+              <CTAButton variant="ghost" href="https://puntobiz.com.ar/negocios/rosario-se-convierte-en-laboratorio-de-innovacion-con-la-primera-techweek-20259151200" target="_blank">
+                Punto Biz - Roario se convierte en laboratorio...
+              </CTAButton>
+              <CTAButton variant="ghost" href="https://comunidad.fan/noticias/rosario-tech-week-la-innovacion-se-vive-con-comunidad-fan" target="_blank">
+                Comunidad Fan - Rosario TechWeek: La innovación...
+              </CTAButton>
+              <CTAButton variant="ghost" href="https://rosariotimes.com/rosario-se-prepara-para-su-primera-techweek-innovacion-talento-local-y-mirada-al-mundo/" target="_blank">
+                Rosario Times - Rosario se prepara para su...
+              </CTAButton>
+              <CTAButton variant="ghost" href="https://startupslatam.com/rosario-busca-posicionarse-en-el-mapa-internacional-de-la-innovacion-con-su-primera-techweek/" target="_blank">
+                Startups Latam - Rosario busca posicionarse...
+              </CTAButton>
+              <CTAButton variant="ghost" href="https://squads.ventures/rosario-tech-week-ecosistema-tech-argentino/" target="_blank">
+                Squads Ventures - Rosario TechWeek: Revelando...
+              </CTAButton>
+              <CTAButton variant="ghost" href="https://www.lacapital.com.ar/economia/rosario-muestra-todo-su-potencial-innovacion-startups-y-tecnologia-n10219606.html" target="_blank">
+                La Capital - Rosario muestra todo su potencial... 
+              </CTAButton>
+
+            </div>
           </div>
         </Reveal>
         <Reveal delay={120}>

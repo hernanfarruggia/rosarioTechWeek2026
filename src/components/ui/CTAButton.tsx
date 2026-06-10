@@ -36,7 +36,7 @@ export default function CTAButton({
     variant === 'ghost' ? (
       <>
         {children}
-        <span className="arr" aria-hidden="true">→</span>
+        <span className={target === '_blank' ? 'arr_ext' : 'arr'} aria-hidden="true">→</span>
       </>
     ) : (
       children
