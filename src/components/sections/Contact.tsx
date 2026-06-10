@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import SectionShell from '@/components/ui/SectionShell';
 import Reveal from '@/components/ui/Reveal';
 import CTAButton from '@/components/ui/CTAButton';
+import SplitText from '@/components/ui/SplitText';
 import { socials } from '@/content/site';
 
 interface ContactProps {
@@ -65,10 +66,14 @@ export default function Contact({ message, interest }: ContactProps) {
   };
 
   return (
-    <SectionShell id="contacto" index="09" eyebrow="Contacto" theme="dark" className="contact">
-      <Reveal>
-        <h2 className="h-display" style={{ marginBottom: '1rem' }}>Contacto</h2>
-      </Reveal>
+    <SectionShell id="contacto" eyebrow="Contacto" theme="dark" className="contact" watermark="Contacto">
+      <SplitText
+        as="h2"
+        className="display-xl"
+        style={{ fontSize: 'clamp(2.75rem, 8vw, 6rem)', marginBottom: '1rem' }}
+        variant="mask"
+        text="Contacto"
+      />
       <Reveal delay={80}>
         <p className="kicker">La innovación se activa en comunidad. ¿Te sumás?</p>
       </Reveal>

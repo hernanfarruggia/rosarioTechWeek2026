@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { MotionConfig } from 'framer-motion';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/sections/Hero';
 import About from '@/components/sections/About';
@@ -33,7 +34,7 @@ export default function Home() {
   };
 
   return (
-    <div>
+    <MotionConfig reducedMotion="user">
       <Navigation />
       <main>
         <Hero btnAction={handleContactFormUpdate} />
@@ -52,6 +53,6 @@ export default function Home() {
           <span>{meta.dates} · {meta.location}</span>
         </div>
       </footer>
-    </div>
+    </MotionConfig>
   );
 }

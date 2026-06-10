@@ -1,51 +1,58 @@
-'use client';
-
-import { useRef, type ReactNode } from 'react';
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
+import type { ReactNode } from 'react';
+import Parallax from './Parallax';
 
 interface SectionShellProps {
   id: string;
-  index: string;
   eyebrow: string;
+  index?: string;
   total?: string;
   theme?: 'dark' | 'light';
+  /** giant outlined word/number drawn behind the content, bleeding off the top */
+  watermark?: string;
   className?: string;
   children: ReactNode;
 }
 
 /**
- * SectionShell — container for every section. Owns the theme background,
- * decorative layer (grid + parallax glow), container, and the eyebrow row
- * with index + page-counter. Sets the `id` anchor for scroll nav.
+ * SectionShell — container for every section. Dark sections are transparent so
+ * the global canvas (grid + glows) shows through; light sections are floating
+ * white panels. Renders the eyebrow row + an optional giant watermark.
  */
 export default function SectionShell({
   id,
-  index,
   eyebrow,
+  index,
   total = '09',
   theme = 'dark',
+  watermark,
   className = '',
   children,
 }: SectionShellProps) {
-  const ref = useRef<HTMLElement>(null);
-  const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
-  const y = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [-32, 32]);
-
   return (
-    <section ref={ref} id={id} className={`section theme-${theme} ${className}`.trim()}>
-      <div className="bg-grid" aria-hidden="true" />
-      <motion.div className="bg-glow" aria-hidden="true" style={{ y }} />
+    <section id={id} className={`section theme-${theme} ${className}`.trim()}>
+      {theme === 'light' && <div className="bg-grid" aria-hidden="true" />}
+      {watermark && (
+        <Parallax speed={0.18} className="watermark" aria-hidden>
+          {watermark}
+        </Parallax>
+      )}
       <div className="container">
         <div className="eyebrow-row">
           <span className="lead">
-            <span className="idx">{index}</span> <span>—</span> <span>{eyebrow}</span>
+            {index && (
+              <>
+                <span className="idx">{index}</span>{' '}
+              </>
+            )}
+            <span>—</span> <span>{eyebrow}</span>
           </span>
           <span className="rule" />
-          <span className="count">
-            {index}
-            <span>/{total}</span>
-          </span>
+          {index && (
+            <span className="count">
+              {index}
+              <span>/{total}</span>
+            </span>
+          )}
         </div>
         {children}
       </div>
