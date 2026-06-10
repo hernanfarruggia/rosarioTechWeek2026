@@ -29,7 +29,7 @@ export default function Navigation() {
       <div className="nav-inner">
         <a href="#hero" aria-label="Rosario TechWeek — inicio">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo.svg" alt="Rosario TechWeek" />
+          <img src="/logo.svg" alt="Rosario TechWeek" style={{ scale: 1.8 }} />
         </a>
         <div className={`nav-links${open ? ' open' : ''}`} onClick={() => setOpen(false)}>
           {navItems.map((item) => (
