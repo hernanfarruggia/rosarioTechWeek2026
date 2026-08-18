@@ -65,7 +65,7 @@ export default function Hero({ btnAction }: HeroProps) {
           <CTAButton variant="outline" size="lg" onClick={() => btnAction('sponsor')}>
             Ser sponsor
           </CTAButton>
-          <CTAButton variant="ghost" size="lg" onClick={() => btnAction('venue')}>
+          <CTAButton variant="ghost" size="lg" href="https://convocatoria-rtw26.vercel.app" target="_blank">
             Sumar evento
           </CTAButton>
         </Reveal>

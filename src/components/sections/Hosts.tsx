@@ -8,10 +8,12 @@ interface HostsProps {
   btnAction: (interest: string) => void;
 }
 
+const CONVOCATORIA_URL = 'https://convocatoria-rtw26.vercel.app';
+
 const options = [
-  { idx: '— 01', title: 'Ofrecer venue', body: 'Abrí las puertas de tu espacio y recibí un evento de la semana. Oficinas, coworkings, bares, espacios culturales, centros de convenciones, etc.', interest: 'venue' },
+  { idx: '— 01', title: 'Ofrecer venue', body: 'Abrí las puertas de tu espacio y recibí un evento de la semana. Oficinas, coworkings, bares, espacios culturales, centros de convenciones, etc.', interest: 'venue', externalHref: CONVOCATORIA_URL },
   { idx: '— 02', title: 'Ser speaker', body: 'Compartí tu conocimiento con la comunidad en charlas y paneles. Referentes, expertos y líderes de la industria.', interest: 'speaker' },
-  { idx: '— 03', title: 'Sumar evento', body: 'Agregá tu propio evento al calendario oficial de la TechWeek. Charlas, talleres, paneles, conferencias, etc.', interest: 'event' },
+  { idx: '— 03', title: 'Sumar evento', body: 'Agregá tu propio evento al calendario oficial de la TechWeek. Charlas, talleres, paneles, conferencias, etc.', interest: 'event', externalHref: CONVOCATORIA_URL },
 ];
 
 export default function Hosts({ btnAction }: HostsProps) {
@@ -40,7 +42,12 @@ export default function Hosts({ btnAction }: HostsProps) {
             <Reveal key={o.title} delay={i * 100}>
               <Card index={o.idx} title={o.title}>
                 <p className="c-body" style={{ marginBottom: '1.25rem' }}>{o.body}</p>
-                <CTAButton variant="ghost" onClick={() => btnAction(o.interest)}>
+                <CTAButton
+                  variant="ghost"
+                  href={o.externalHref}
+                  target={o.externalHref ? '_blank' : undefined}
+                  onClick={o.externalHref ? undefined : () => btnAction(o.interest)}
+                >
                   Quiero sumarme
                 </CTAButton>
               </Card>

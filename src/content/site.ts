@@ -54,12 +54,13 @@ export const pastEvents: string[] = [
 export const team: TeamMember[] = [
   { name: "Luisina Gala Golosetti", role: "CEO @ Golosetti Abogados", img: "/team/luisina.jpeg" },
   { name: "Gaspar Rodriguez", role: "Co-Founder @ Fullfoto & Overboost", img: "/team/gaspar.jpeg" },
-  { name: "Nicolas Davobe", role: "Co-Founder @ We Are Ginkgo", img: "/team/nicolas.jpeg" },
-  { name: "Gabriela Giorgio", role: "Growth & Marketing Consultant", img: "/team/gabriela.jpeg" },
+  { name: "Nicolas Davobe", role: "Industrial Engineer & Tech Consultant", img: "/team/nicolas.jpeg" },
   { name: "Hernán Farruggia", role: "Software Engineer & AI Consultant", img: "/team/hernan.jpeg" },
-  { name: "Bruno Ruyu", role: "Co-Founder & CEO @ Teramot", img: "/team/bruno.jpeg" },
+  { name: "Gabriela Giorgio", role: "Growth & Marketing Consultant", img: "/team/gabriela.jpeg" },
+  { name: "María Costanza Grosso", role: "Journalist & Community Manager", img: "/team/coty.jpeg" },
   { name: "Damian Silva", role: "Innovation & R+D @ CREA", img: "/team/damian.jpeg" },
   { name: "Sol Ariaca", role: "Product & Innovation Strategist", img: "/team/sol.jpeg" },
+  { name: "Bruno Ruyu", role: "Co-Founder & CEO @ Teramot", img: "/team/bruno.jpeg" },
 ];
 
 export const socials: Social[] = [
