@@ -18,10 +18,11 @@ const interestLabels: Record<string, string> = {
   other: 'Otro',
 };
 
-// Send-only identity on the verified domain (no mailbox needed)
-const FROM = 'Rosario TechWeek <noreply@rosariotechweek.com>';
-// Recipients of the internal notification
-const TO = ['rosariotechweek@gmail.com', 'hernan.farruggia@gmail.com'];
+// Resend sandbox sender: only deliverable to the Resend account owner's own
+// email until a custom domain is verified (no DNS access to rosariotechweek.com yet)
+const FROM = 'Rosario TechWeek <onboarding@resend.dev>';
+// Recipient of the internal notification — forwarded to rosariotechweek@gmail.com via a Gmail filter
+const TO = ['hernan.farruggia@gmail.com'];
 
 export async function POST(request: NextRequest) {
   try {
