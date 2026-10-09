@@ -1,6 +1,6 @@
 # Claude Design — Rosario TechWeek 2026
 
-Design system de la web de la **Rosario TechWeek**, II edición (19–23 octubre 2026).
+Design system de la web de la **Rosario TechWeek**, II edición (19–25 octubre 2026).
 Define tokens, tipografía, componentes, motion y convenciones para construir un landing
 **clean, minimalista, 100% scroll con parallax**.
 

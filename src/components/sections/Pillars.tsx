@@ -7,7 +7,7 @@ const pillars = [
   {
     idx: '— 01',
     title: 'Conocimiento',
-    body: 'Charlas, talleres y paneles con referentes que comparten lo que saben. Cinco días de aprendizaje práctico sobre tecnología, producto y negocio, pensados para que te lleves ideas aplicables desde el primer evento.',
+    body: 'Charlas, talleres y paneles con referentes que comparten lo que saben. Siete días de aprendizaje práctico sobre tecnología, producto y negocio, pensados para que te lleves ideas aplicables desde el primer evento.',
   },
   {
     idx: '— 02',

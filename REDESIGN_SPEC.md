@@ -5,7 +5,7 @@ siguiendo `DESIGN_SYSTEM.md` ("Claude Design"). Esta etapa **no implementa** los
 documento es la guía para hacerlo después desde Claude Code.
 
 - **Stack actual:** Next.js 15 (App Router, `src/app`), React 19, TypeScript, Tailwind v4, framer-motion, lucide-react.
-- **Edición nueva:** II edición, **19–23 octubre 2026**.
+- **Edición nueva:** II edición, **19–25 octubre 2026**.
 - **Regla transversal:** **sin precios, entradas ni montos de sponsors** en ningún lado.
 
 ---

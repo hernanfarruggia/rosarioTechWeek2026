@@ -53,7 +53,7 @@ export default function Hero({ btnAction }: HeroProps) {
 
         <Reveal trigger="load" delay={650}>
           <p className="lead" style={{ marginTop: '1.75rem' }}>
-            Ya dimos el primer paso. Es tiempo de <Highlight>acelerar</Highlight>. Cinco días para
+            Ya dimos el primer paso. Es tiempo de <Highlight>acelerar</Highlight>. Siete días para
             visibilizar, celebrar y conectar el talento de la ciudad.
           </p>
         </Reveal>

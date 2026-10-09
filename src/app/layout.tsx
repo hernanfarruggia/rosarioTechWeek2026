@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     template: '%s | Rosario TechWeek 2026',
     default: 'Rosario TechWeek 2026 - Es tiempo de acelerar'
   },
-  description: "Rosario TechWeek 2026 — II edición. Cinco días para visibilizar, celebrar y potenciar el ecosistema tecnológico y emprendedor de Rosario. Del 19 al 23 de octubre de 2026, Santa Fe, Argentina.",
+  description: "Rosario TechWeek 2026 — II edición. Siete días para visibilizar, celebrar y potenciar el ecosistema tecnológico y emprendedor de Rosario. Del 19 al 25 de octubre de 2026, Santa Fe, Argentina.",
   keywords: [
     "Rosario TechWeek",
     "tecnología Rosario",
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     locale: 'es_AR',
     url: 'https://rosariotechweek.com',
     title: 'Rosario TechWeek 2026 - Es tiempo de acelerar',
-    description: 'II edición. Del 19 al 23 de octubre de 2026, Rosario, Argentina. Cinco días para visibilizar, celebrar y potenciar el ecosistema tecnológico y emprendedor.',
+    description: 'II edición. Del 19 al 25 de octubre de 2026, Rosario, Argentina. Siete días para visibilizar, celebrar y potenciar el ecosistema tecnológico y emprendedor.',
     siteName: 'Rosario TechWeek 2026',
     images: [
       {
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
     site: '@rosariotechweek',
     creator: '@rosariotechweek',
     title: 'Rosario TechWeek 2026 - Es tiempo de acelerar',
-    description: 'II edición. Del 19 al 23 de octubre de 2026, Rosario, Argentina.',
+    description: 'II edición. Del 19 al 25 de octubre de 2026, Rosario, Argentina.',
     images: ['/twitter-image.jpg'],
   },
   other: {

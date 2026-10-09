@@ -10,7 +10,7 @@ export type Social = { name: string; href: string };
 
 export const meta = {
   edition: "2da Edición",
-  dates: "19–23 Octubre 2026",
+  dates: "19–25 Octubre 2026",
   location: "Rosario, Argentina",
   luma: "https://lu.ma/rosariotechweek",
 };

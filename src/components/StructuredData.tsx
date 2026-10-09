@@ -3,9 +3,9 @@ export default function StructuredData() {
     "@context": "https://schema.org",
     "@type": "Event",
     "name": "Rosario TechWeek 2026",
-    "description": "La Rosario TechWeek es el punto de encuentro donde el talento tech de Rosario se visibiliza, conecta y proyecta hacia el futuro. Cinco días de conferencias, networking y actividades tecnológicas — II edición.",
+    "description": "La Rosario TechWeek es el punto de encuentro donde el talento tech de Rosario se visibiliza, conecta y proyecta hacia el futuro. Siete días de conferencias, networking y actividades tecnológicas — II edición.",
     "startDate": "2026-10-19",
-    "endDate": "2026-10-23",
+    "endDate": "2026-10-25",
     "eventStatus": "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
     "location": {

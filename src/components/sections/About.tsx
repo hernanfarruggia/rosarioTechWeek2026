@@ -30,7 +30,7 @@ export default function About() {
               emprendedor de la ciudad — posicionando a Rosario como el epicentro y hub de la innovación regional.
             </p>
             <p className="lead">
-              Startups, empresas tech, industria tradicional, universidades e inversores comparten agenda durante 5 días para conectar, aprender y hacer negocios reales.
+              Startups, empresas tech, industria tradicional, universidades e inversores comparten agenda durante 7 días para conectar, aprender y hacer negocios reales.
             </p>
           </Reveal>
         </div>
