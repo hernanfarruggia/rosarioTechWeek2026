@@ -13,6 +13,7 @@ export const meta = {
   dates: "19–25 Octubre 2026",
   location: "Rosario, Argentina",
   luma: "https://lu.ma/rosariotechweek",
+  lumaEmbed: "https://lu.ma/embed/calendar/cal-PR3MJJsdl08gYdY/events",
 };
 
 /* Stats de la edición inaugural 2025 (métricas de resultado, sin pricing) */

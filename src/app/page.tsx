@@ -7,6 +7,7 @@ import Navigation from '@/components/Navigation';
 import Hero from '@/components/sections/Hero';
 import About from '@/components/sections/About';
 import Pillars from '@/components/sections/Pillars';
+import Agenda from '@/components/sections/Agenda';
 import PreviousEdition from '@/components/sections/PreviousEdition';
 import Sponsors from '@/components/sections/Sponsors';
 import Hosts from '@/components/sections/Hosts';
@@ -40,6 +41,7 @@ export default function Home() {
         <Hero btnAction={handleContactFormUpdate} />
         <About />
         <Pillars />
+        <Agenda />
         <PreviousEdition />
         <Sponsors btnAction={handleContactFormUpdate} />
         <Hosts btnAction={handleContactFormUpdate} />
